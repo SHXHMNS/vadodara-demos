@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="theme-color" content="#0D0D0D"/>
+<title>Sangam Hotel — Authentic Punjabi Dhaba, Koyali, Vadodara</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{--r:#FF4500;--rd:#CC3700;--g:#FFD700;--gm:#FF8C00;--bg:#0D0D0D;--bg2:#111;--c:#171717;--fg:#F5F0E8;--mu:#555;--fh:'Syne',sans-serif;--fb:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);overflow-x:hidden}
+/* CURSOR */
+.cur{position:fixed;width:10px;height:10px;background:var(--r);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.cur-r{position:fixed;width:28px;height:28px;border:1px solid rgba(255,69,0,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+.cur-r.h{width:44px;height:44px;border-color:var(--g)}
+@media(hover:none){.cur,.cur-r{display:none}body{cursor:auto}}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.s{background:rgba(13,13,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,69,0,.12)}
+.logo{font-family:var(--fh);font-size:1.1rem;font-weight:800;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--r)}
+.nl{display:flex;gap:2rem;list-style:none}
+.nl a{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.45);text-decoration:none;transition:color .2s}
+.nl a:hover{color:var(--r)}
+.nbtn{background:var(--r);color:#fff;font-family:var(--fh);font-size:.72rem;font-weight:700;padding:.65rem 1.4rem;text-decoration:none;letter-spacing:.08em;border-radius:0;transition:filter .2s}
+.nbtn:hover{filter:brightness(1.12) drop-shadow(0 0 10px rgba(255,69,0,.5))}
+@media(max-width:768px){.nl{display:none}nav{padding:1rem 1.25rem}}
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;padding-top:70px}
+.hbg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1400&q=80') center/cover no-repeat;transform:scale(1.05)}
+.hov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,1) 25%,rgba(13,13,13,.75) 60%,rgba(13,13,13,.3) 100%)}
+.hov2{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,13,.8) 40%,transparent 100%)}
+.hcont{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:0 2.5rem 5rem}
+@media(max-width:768px){.hcont{padding:0 1.25rem 3.5rem}}
+.hey{font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--r);margin-bottom:1.5rem;opacity:0}
+.ht{font-family:var(--fh);font-size:clamp(3.5rem,9vw,8.5rem);font-weight:800;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;opacity:0;transform:translateY(80px)}
+.ht .slash{color:var(--r)}
+.hsub{font-size:clamp(.88rem,1.4vw,1rem);color:rgba(245,240,232,.55);max-width:480px;line-height:1.8;margin:1.8rem 0;opacity:0}
+.hcta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0}
+.btn-r{display:inline-flex;align-items:center;gap:.5rem;background:var(--r);color:#fff;font-family:var(--fh);font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.9rem 2rem;text-decoration:none;transition:filter .25s,transform .25s}
+.btn-r:hover{filter:brightness(1.1) drop-shadow(0 0 16px rgba(255,69,0,.5));transform:translateY(-2px)}
+.btn-og{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--fg);font-family:var(--fh);font-size:.78rem;font-weight:600;letter-spacing:.08em;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(245,240,232,.18);transition:border-color .25s,color .25s}
+.btn-og:hover{border-color:var(--g);color:var(--g)}
+.hrating-badge{position:absolute;bottom:3.5rem;right:2.5rem;background:var(--r);padding:1.5rem 2rem;z-index:2;text-align:center;opacity:0}
+@media(max-width:768px){.hrating-badge{position:static;margin-top:1.5rem;display:inline-block;opacity:0}}
+.hrn{font-family:var(--fh);font-size:2.8rem;font-weight:800;color:#fff;line-height:1}
+.hrl{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:.3rem}
+/* TICKER */
+.ticker{background:var(--r);padding:.5rem 0;overflow:hidden;border-top:3px solid var(--g);border-bottom:3px solid var(--g)}
+.ti{display:inline-flex;animation:tk 20s linear infinite;white-space:nowrap}
+.titem{display:inline-flex;align-items:center;font-family:var(--fh);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:0 1.8rem}
+.tsep{color:rgba(255,255,255,.4);margin:0 .4rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* MENU */
+.sec{padding:7rem 2.5rem;position:relative}
+@media(max-width:768px){.sec{padding:4rem 1.25rem}}
+.ey{font-size:.66rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--r);margin-bottom:.9rem}
+.st{font-family:var(--fh);font-size:clamp(1.8rem,4.5vw,3.5rem);font-weight:800;line-height:1.05;margin-bottom:.5rem}
+/* HORIZONTAL SCROLL MENU */
+.menu-scroll-wrap{overflow:hidden;margin-top:3.5rem;position:relative}
+.menu-scroll-inner{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:rgba(255,69,0,.3) transparent;-webkit-overflow-scrolling:touch}
+.menu-scroll-inner::-webkit-scrollbar{height:3px}
+.menu-scroll-inner::-webkit-scrollbar-track{background:transparent}
+.menu-scroll-inner::-webkit-scrollbar-thumb{background:rgba(255,69,0,.4)}
+.mcard{flex-shrink:0;width:280px;background:var(--c);border:1px solid rgba(255,255,255,.05);overflow:hidden;transition:border-color .3s,transform .3s;cursor:default}
+.mcard:hover{border-color:rgba(255,69,0,.25);transform:translateY(-4px)}
+.mcimg{height:180px;overflow:hidden;position:relative}
+.mcimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mcard:hover .mcimg img{transform:scale(1.06)}
+.mcimg-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(23,23,23,.9) 0%,transparent 50%)}
+.mcbody{padding:1.4rem}
+.mcname{font-family:var(--fh);font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.mcdesc{font-size:.78rem;color:rgba(245,240,232,.45);line-height:1.65;margin-bottom:.8rem}
+.mcfooter{display:flex;justify-content:space-between;align-items:center}
+.mcprice{font-family:var(--fh);font-size:1.2rem;font-weight:800;color:var(--r)}
+.mctag{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);color:var(--g);padding:.2rem .5rem}
+/* STATS */
+.stats{background:var(--r);padding:5rem 2.5rem}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1400px;margin:0 auto}
+.si{text-align:center;padding:2rem;border-right:1px solid rgba(255,255,255,.15)}
+.si:last-child{border-right:none}
+.sn{font-family:var(--fh);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:800;color:#fff;line-height:1}
+.sl{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:.4rem}
+@media(max-width:768px){.sgrid{grid-template-columns:1fr 1fr}.si:nth-child(2){border-right:none}.si:nth-child(3){border-right:1px solid rgba(255,255,255,.15)}.stats{padding:3rem 1.25rem}}
+/* SPECIALS */
+.spec-section{background:var(--bg2);padding:7rem 2.5rem}
+@media(max-width:768px){.spec-section{padding:4rem 1.25rem}}
+.specgrid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1280px;margin:0 auto}
+@media(max-width:900px){.specgrid{grid-template-columns:1fr;gap:3rem}}
+.spec-img-wrap{position:relative}
+.spec-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.spec-img-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--r);padding:1.5rem 2rem}
+@media(max-width:600px){.spec-img-badge{right:1rem;bottom:-1rem}}
+.sibnum{font-family:var(--fh);font-size:2.5rem;font-weight:800;color:#fff;line-height:1}
+.siblbl{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:.25rem}
+.speclist{margin-top:3rem}
+.specitem{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05);transition:padding-left .25s}
+.specitem:hover{padding-left:.75rem}
+.spec-num{font-family:var(--fh);font-size:.8rem;font-weight:800;color:var(--r);min-width:2rem}
+.spec-name{font-family:var(--fh);font-size:1.1rem;font-weight:700;flex:1}
+.spec-tag{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,69,0,.1);border:1px solid rgba(255,69,0,.25);color:var(--r);padding:.2rem .6rem;white-space:nowrap}
+/* REVIEWS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:3.5rem}
+@media(max-width:768px){.tgrid{grid-template-columns:1fr}}
+.tc{background:var(--c);border:1px solid rgba(255,255,255,.04);padding:1.8rem;transition:border-color .3s}
+.tc:hover{border-color:rgba(255,69,0,.2)}
+.tst{color:var(--g);font-size:.78rem;letter-spacing:.06em;margin-bottom:.8rem}
+.tt{font-size:.85rem;color:rgba(245,240,232,.55);line-height:1.8;font-style:italic;margin-bottom:1.2rem}
+.tby{font-family:var(--fh);font-size:.82rem;font-weight:700;color:var(--fg)}
+.twh{font-size:.65rem;color:var(--mu)}
+/* CTA */
+.ctas{padding:7rem 2.5rem;background:var(--bg);text-align:center;position:relative;overflow:hidden}
+.ctabg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fh);font-size:clamp(5rem,15vw,13rem);font-weight:800;color:rgba(255,69,0,.04);white-space:nowrap;pointer-events:none}
+.ctai{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.ctat{font-family:var(--fh);font-size:clamp(1.8rem,4.5vw,3.5rem);font-weight:800;margin-bottom:1.2rem;line-height:1.1}
+.ctat span{color:var(--r);text-shadow:0 0 25px rgba(255,69,0,.4)}
+.ctasub{font-size:.92rem;color:rgba(245,240,232,.45);margin-bottom:2.5rem;line-height:1.7}
+.ctarow{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.ctaph{display:inline-flex;align-items:center;gap:.7rem;background:transparent;border:1px solid rgba(255,69,0,.4);color:var(--r);font-family:var(--fh);font-size:1rem;font-weight:700;padding:1.1rem 2.5rem;text-decoration:none;letter-spacing:.05em;transition:all .3s}
+.ctaph:hover{background:var(--r);color:#fff;box-shadow:0 0 35px rgba(255,69,0,.4)}
+/* LOC */
+.lgrid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;max-width:1280px;margin:3rem auto 0}
+@media(max-width:768px){.lgrid{grid-template-columns:1fr}}
+.ld{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.lico{width:32px;height:32px;background:rgba(255,69,0,.08);border:1px solid rgba(255,69,0,.2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.llbl{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--r);margin-bottom:.2rem}
+.lval{font-size:.86rem;color:rgba(245,240,232,.78)}
+.mbox{background:var(--c);border:1px solid rgba(255,69,0,.15);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;position:relative;overflow:hidden}
+.mbox::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80') center/cover;opacity:.06}
+.mbox a{background:var(--r);color:#fff;font-family:var(--fh);font-size:.75rem;font-weight:700;padding:.8rem 1.8rem;text-decoration:none;letter-spacing:.1em;z-index:1;transition:filter .2s}
+.mbox a:hover{filter:brightness(1.1) drop-shadow(0 0 10px rgba(255,69,0,.5))}
+footer{background:#000;padding:1.8rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,69,0,.1)}
+.fb{font-family:var(--fh);font-size:.9rem;font-weight:800;color:var(--r)}
+.fc{font-size:.65rem;color:var(--mu)}
+@media(max-width:600px){footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.4rem 1.25rem}}
+.rv{opacity:0;transform:translateY(28px)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="cur"></div><div class="cur-r"></div>
+
+<nav>
+  <a class="logo" href="#">Sangam<span>.</span></a>
+  <ul class="nl"><li><a href="#menu">Menu</a></li><li><a href="#specials">Specials</a></li><li><a href="#loc">Visit</a></li></ul>
+  <a href="tel:+919675811035" class="nbtn">Order Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hbg"></div><div class="hov"></div><div class="hov2"></div>
+  <div class="hcont">
+    <p class="hey" id="ey">✦ Golden Chowkdi, Koyali, Vadodara · Authentic Punjabi Dhaba</p>
+    <h1 class="ht" id="t1">SANGAM<br/>HOTEL<span class="slash">.</span></h1>
+    <p class="hsub" id="hs">Where Punjab meets Vadodara. 6,350+ families have tasted the difference. Will you?</p>
+    <div class="hcta" id="hc">
+      <a href="tel:+919675811035" class="btn-r">📞 Call to Order</a>
+      <a href="https://maps.google.com/?cid=6730621521046891680" target="_blank" class="btn-og">Get Directions →</a>
+    </div>
+  </div>
+  <div class="hrating-badge" id="rb">
+    <div class="hrn">4.6★</div>
+    <div class="hrl">6,350+ Google Reviews</div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ti">
+    <span class="titem">DAL MAKHANI<span class="tsep">✦</span></span><span class="titem">BUTTER CHICKEN<span class="tsep">✦</span></span><span class="titem">TANDOORI ROTI<span class="tsep">✦</span></span><span class="titem">PANEER MASALA<span class="tsep">✦</span></span><span class="titem">KADAI CHICKEN<span class="tsep">✦</span></span><span class="titem">LASSI<span class="tsep">✦</span></span><span class="titem">THALI ₹220<span class="tsep">✦</span></span>
+    <span class="titem">DAL MAKHANI<span class="tsep">✦</span></span><span class="titem">BUTTER CHICKEN<span class="tsep">✦</span></span><span class="titem">TANDOORI ROTI<span class="tsep">✦</span></span><span class="titem">PANEER MASALA<span class="tsep">✦</span></span><span class="titem">KADAI CHICKEN<span class="tsep">✦</span></span><span class="titem">LASSI<span class="tsep">✦</span></span><span class="titem">THALI ₹220<span class="tsep">✦</span></span>
+  </div>
+</div>
+
+<section class="sec" id="menu">
+  <p class="ey rv">OUR MENU</p>
+  <h2 class="st rv">Taste of <span style="color:var(--r)">Punjab</span></h2>
+  <p class="rv" style="font-size:.9rem;color:rgba(245,240,232,.45);margin-top:.5rem;margin-bottom:.5rem">Scroll to explore →</p>
+  <div class="menu-scroll-wrap rv">
+    <div class="menu-scroll-inner">
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80" alt="dal makhani"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Dal Makhani</div><div class="mcdesc">Slow-cooked overnight on wood fire. Rich, buttery, unforgettable.</div><div class="mcfooter"><span class="mcprice">₹120</span><span class="mctag">Bestseller</span></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80" alt="butter chicken"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Butter Chicken</div><div class="mcdesc">Tandoor-roasted chicken in velvety tomato-butter sauce.</div><div class="mcfooter"><span class="mcprice">₹180</span><span class="mctag">Must Try</span></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&q=80" alt="paneer"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Paneer Butter Masala</div><div class="mcdesc">Cottage cheese in kashmiri chilli and cream gravy.</div><div class="mcfooter"><span class="mcprice">₹160</span><span class="mctag">Veg Special</span></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80" alt="kadai chicken"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Kadai Chicken</div><div class="mcdesc">Bold and spicy with freshly ground kadai masala.</div><div class="mcfooter"><span class="mcprice">₹190</span><span class="mctag">Chef Pick</span></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1574484284002-952d92a03a05?w=400&q=80" alt="thali"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Full Thali</div><div class="mcdesc">Dal + Sabzi + Roti + Rice + Salad + Papad + Sweet.</div><div class="mcfooter"><span class="mcprice">₹220</span><span class="mctag">Best Value</span></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcimg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="roti"/><div class="mcimg-ov"></div></div>
+        <div class="mcbody"><div class="mcname">Tandoori Roti</div><div class="mcdesc">Fresh from the clay oven. Charred, wholesome, perfect.</div><div class="mcfooter"><span class="mcprice">₹30</span><span class="mctag">Daily Fresh</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="sgrid">
+    <div class="si rv"><div class="sn" data-count="6350" data-suffix="+">0+</div><div class="sl">Google Reviews</div></div>
+    <div class="si rv"><div class="sn">4.6★</div><div class="sl">Google Rating</div></div>
+    <div class="si rv"><div class="sn" data-count="15" data-suffix="+">0+</div><div class="sl">Years Serving</div></div>
+    <div class="si rv"><div class="sn">Open</div><div class="sl">7 Days a Week</div></div>
+  </div>
+</section>
+
+<section class="spec-section" id="specials">
+  <div class="specgrid">
+    <div class="spec-img-wrap rv">
+      <img class="spec-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=700&q=80" alt="sangam food"/>
+      <div class="spec-img-badge">
+        <div class="sibnum">6350+</div>
+        <div class="siblbl">Happy Diners</div>
+      </div>
+    </div>
+    <div>
+      <p class="ey rv">SANGAM SPECIALS</p>
+      <h2 class="rv" style="font-family:var(--fh);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;margin-bottom:.5rem;line-height:1.1">Dishes That Made<br/><span style="color:var(--r)">Us Famous</span></h2>
+      <p class="rv" style="font-size:.88rem;color:rgba(245,240,232,.45);line-height:1.8;margin-bottom:1.5rem">Every recipe is a tradition. Every plate tells a story. This is what keeps Vadodara coming back.</p>
+      <div class="speclist">
+        <div class="specitem rv"><span class="spec-num">01</span><span class="spec-name">Dal Makhani</span><span class="spec-tag">Overnight Cook</span></div>
+        <div class="specitem rv"><span class="spec-num">02</span><span class="spec-name">Tandoori Platter</span><span class="spec-tag">Clay Oven</span></div>
+        <div class="specitem rv"><span class="spec-num">03</span><span class="spec-name">Full Punjabi Thali</span><span class="spec-tag">Best Value</span></div>
+        <div class="specitem rv"><span class="spec-num">04</span><span class="spec-name">Sweet Lassi</span><span class="spec-tag">House Made</span></div>
+        <div class="specitem rv"><span class="spec-num">05</span><span class="spec-name">Makki di Roti</span><span class="spec-tag">Daily Fresh</span></div>
+      </div>
+      <div style="margin-top:2rem;opacity:0" class="rv">
+        <a href="tel:+919675811035" class="btn-r">📞 Order Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <p class="ey">REVIEWS</p>
+  <h2 class="st rv">6,350+ <span style="color:var(--r)">Happy Families</span></h2>
+  <div class="tgrid">
+    <div class="tc rv"><div class="tst">★★★★★</div><p class="tt">"The dal makhani here takes you straight to Amritsar. An honest, no-frills dhaba with outstanding food. My weekly ritual."</p><p class="tby">Rajesh M.</p><p class="twh">Google Review · 2025</p></div>
+    <div class="tc rv"><div class="tst">★★★★★</div><p class="tt">"Best thali in Koyali, no contest. Complete meal under ₹220. My whole family eats here every Sunday without exception."</p><p class="tby">Priya S.</p><p class="twh">Google Review · 2025</p></div>
+    <div class="tc rv"><div class="tst">★★★★★</div><p class="tt">"I drive 20 minutes just for their butter chicken and lassi. Generous portions, perfect spice levels. A true Vadodara gem."</p><p class="tby">Arjun K.</p><p class="twh">Google Review · 2024</p></div>
+  </div>
+</section>
+
+<section class="ctas">
+  <div class="ctabg">EAT</div>
+  <div class="ctai rv">
+    <h2 class="ctat">Hungry? <span>Come In.</span></h2>
+    <p class="ctasub">Over 6,350 families have trusted us. Real food, real flavour, real Punjab — right here in Vadodara.</p>
+    <div class="ctarow">
+      <a href="tel:+919675811035" class="ctaph">📞 +91 96758 11035</a>
+      <a href="https://maps.google.com/?cid=6730621521046891680" target="_blank" class="btn-og">🗺️ Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="loc">
+  <p class="ey">FIND US</p>
+  <h2 class="st rv">Visit <span style="color:var(--r)">Sangam Hotel</span></h2>
+  <div class="lgrid">
+    <div>
+      <div class="ld rv"><div class="lico">📍</div><div><div class="llbl">Address</div><div class="lval">Golden Chowkdi, Koyali, Vadodara</div></div></div>
+      <div class="ld rv"><div class="lico">📞</div><div><div class="llbl">Phone</div><div class="lval"><a href="tel:+919675811035" style="color:var(--r);text-decoration:none">+91 96758 11035</a></div></div></div>
+      <div class="ld rv"><div class="lico">⭐</div><div><div class="llbl">Rating</div><div class="lval">4.6 ★ · 6,350+ Google Reviews</div></div></div>
+      <div class="ld rv"><div class="lico">🕐</div><div><div class="llbl">Hours</div><div class="lval">8:00 AM – 11:00 PM · Daily</div></div></div>
+    </div>
+    <div class="mbox rv">
+      <p style="font-family:var(--fh);font-size:1.1rem;font-weight:800;color:var(--r);z-index:1">SANGAM HOTEL</p>
+      <p style="font-size:.78rem;color:var(--mu);z-index:1;text-align:center">Golden Chowkdi, Koyali, Vadodara</p>
+      <a href="https://maps.google.com/?cid=6730621521046891680" target="_blank">Open in Maps →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Sangam Hotel.</div>
+  <div class="fc">© 2026 Sangam Hotel · Koyali, Vadodara</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+if(window.matchMedia('(hover:hover)').matches){
+  const cur=document.querySelector('.cur'),ring=document.querySelector('.cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;gsap.to(cur,{x:mx,y:my,duration:.08});});
+  (function loop(){rx+=(mx-rx)*.08;ry+=(my-ry)*.08;gsap.set(ring,{x:rx,y:ry});requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.mcard,.tc,.specitem').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('h'));el.addEventListener('mouseleave',()=>ring.classList.remove('h'));});
+}
+window.addEventListener('scroll',()=>document.querySelector('nav').classList.toggle('s',scrollY>60));
+const tl=gsap.timeline({delay:.2});
+tl.to('#ey',{opacity:1,y:0,duration:.6,ease:'power3.out'})
+  .to('#t1',{opacity:1,y:0,duration:.95,ease:'expo.out'},'-=.1')
+  .to('#hs',{opacity:1,y:0,duration:.6,ease:'power2.out'},'-=.25')
+  .to('#hc',{opacity:1,y:0,duration:.5,ease:'power2.out'},'-=.1')
+  .to('#rb',{opacity:1,y:0,duration:.5,ease:'back.out(1.5)'},'-=.1');
+gsap.utils.toArray('.rv').forEach(el=>gsap.to(el,{scrollTrigger:{trigger:el,start:'top 88%'},opacity:1,y:0,duration:.7,ease:'power3.out'}));
+// parallax on hero bg
+ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',onUpdate:self=>{
+  gsap.to('.hbg',{y:self.progress*80,ease:'none',duration:0});
+}});
+// mouse parallax
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*20,y=(e.clientY/innerHeight-.5)*20;
+  gsap.to('.hbg',{x:x*.3,duration:2,ease:'power2.out'});
+});
+// counters
+ScrollTrigger.create({trigger:'.stats',start:'top 80%',once:true,onEnter:()=>{
+  document.querySelectorAll('[data-count]').forEach(el=>{let c=0,t=+el.dataset.count,s=el.dataset.suffix||'';const iv=setInterval(()=>{c=Math.min(c+Math.ceil(t/60),t);el.textContent=c.toLocaleString()+s;if(c>=t)clearInterval(iv);},20);});
+}});
+</script>
+</body>
+</html>

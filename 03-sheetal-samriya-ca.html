@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="theme-color" content="#05060F"/>
+<title>Sheetal Samriya & Associates — Chartered Accountants, Vadodara</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{--g:#FFD700;--b:#00D4FF;--p:#9D4EDD;--bg:#05060F;--bg2:#080912;--c:#0D0F1E;--fg:#F2F0EB;--mu:#4A4E6A;--fh:'DM Serif Display',serif;--fb:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);overflow-x:hidden}
+/* subtle grid bg */
+body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,215,0,.015) 0,rgba(255,215,0,.015) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,rgba(255,215,0,.015) 0,rgba(255,215,0,.015) 1px,transparent 1px,transparent 80px);pointer-events:none;z-index:0}
+/* cursor */
+.cur{position:fixed;width:6px;height:6px;background:var(--g);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cur-r{position:fixed;width:26px;height:26px;border:1px solid rgba(255,215,0,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+.cur-r.h{width:44px;height:44px;border-color:var(--g)}
+@media(hover:none){.cur,.cur-r{display:none}body{cursor:auto}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s;background:rgba(5,6,15,.6);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,215,0,.08)}
+.logo{display:flex;flex-direction:column;text-decoration:none}
+.logo-main{font-family:var(--fh);font-size:1.05rem;color:var(--fg)}
+.logo-sub{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);font-weight:500}
+.nl{display:flex;gap:2.5rem;list-style:none}
+.nl a{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,240,235,.45);text-decoration:none;transition:color .2s}
+.nl a:hover{color:var(--g)}
+.nbtn{background:transparent;border:1px solid rgba(255,215,0,.35);color:var(--g);font-family:var(--fb);font-size:.7rem;font-weight:600;padding:.65rem 1.5rem;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:all .3s}
+.nbtn:hover{background:var(--g);color:#000}
+@media(max-width:768px){.nl{display:none}nav{padding:1rem 1.25rem}}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+@media(max-width:768px){.hero{padding:5rem 1.25rem 3rem}}
+.hglow{position:absolute;top:-100px;right:0;width:700px;height:700px;background:radial-gradient(ellipse,rgba(255,215,0,.06) 0%,transparent 65%);pointer-events:none}
+.hglow2{position:absolute;bottom:-50px;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,212,255,.04) 0%,transparent 65%);pointer-events:none}
+.hcont{max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hcont{grid-template-columns:1fr;gap:3rem}}
+.hleft{}
+.heyebrow{display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;opacity:0}
+.hline{width:30px;height:1px;background:var(--g)}
+.heyebrow span{font-size:.65rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--g)}
+.ht{font-family:var(--fh);font-size:clamp(2.8rem,5.5vw,5rem);line-height:1.12;margin-bottom:1.5rem;opacity:0;transform:translateY(50px)}
+.ht em{font-style:italic;color:var(--g)}
+.hsub{font-size:.95rem;color:rgba(242,240,235,.5);max-width:460px;line-height:1.85;margin-bottom:2.5rem;opacity:0}
+.hcta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0}
+.btn-g{display:inline-flex;align-items:center;gap:.5rem;background:var(--g);color:#000;font-family:var(--fb);font-size:.75rem;font-weight:700;letter-spacing:.1em;padding:.9rem 2rem;text-decoration:none;transition:filter .25s,transform .25s}
+.btn-g:hover{filter:brightness(1.1) drop-shadow(0 0 16px rgba(255,215,0,.5));transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--fg);font-family:var(--fb);font-size:.75rem;font-weight:600;letter-spacing:.1em;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(242,240,235,.18);transition:border-color .25s,color .25s}
+.btn-o:hover{border-color:var(--g);color:var(--g)}
+/* floating stats card */
+.hright{position:relative;z-index:1}
+.stat-float{background:rgba(13,15,30,.8);backdrop-filter:blur(24px);border:1px solid rgba(255,215,0,.15);padding:2rem;position:relative;overflow:hidden}
+.stat-float::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--g),var(--b))}
+.sfrow{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.sfitem{text-align:center;padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,215,0,.08)}
+.sfnum{font-family:var(--fh);font-size:2.5rem;color:var(--g);line-height:1;text-shadow:0 0 20px rgba(255,215,0,.3)}
+.sflbl{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-top:.4rem}
+.sf-badge{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;margin-top:1rem}
+.sf-badge-ico{font-size:1.2rem}
+.sf-badge-t{font-size:.8rem;font-weight:600;color:var(--fg)}
+.sf-badge-s{font-size:.7rem;color:var(--mu)}
+/* TICKER */
+.ticker{background:var(--c);padding:.5rem 0;overflow:hidden;border-top:1px solid rgba(255,215,0,.08);border-bottom:1px solid rgba(255,215,0,.08)}
+.ti{display:inline-flex;animation:tk 25s linear infinite;white-space:nowrap}
+.titem{display:inline-flex;align-items:center;font-family:var(--fb);font-size:.67rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,240,235,.35);padding:0 2rem}
+.tsep{color:var(--g);margin:0 .5rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* SERVICES */
+.sec{padding:7rem 3rem;position:relative;z-index:1}
+@media(max-width:768px){.sec{padding:4rem 1.25rem}}
+.ey{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.ey-line{width:24px;height:1px;background:var(--g)}
+.ey-t{font-size:.65rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--g)}
+.st{font-family:var(--fh);font-size:clamp(1.8rem,4vw,3.2rem);line-height:1.1;margin-bottom:.5rem}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,215,0,.06);margin-top:4rem;border:1px solid rgba(255,215,0,.06)}
+@media(max-width:900px){.sgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.sgrid{grid-template-columns:1fr}}
+.svc{background:var(--bg);padding:2.2rem;position:relative;overflow:hidden;transition:background .3s}
+.svc:hover{background:var(--c)}
+.svc-bar{position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--g);transform:scaleY(0);transform-origin:top;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.svc:hover .svc-bar{transform:scaleY(1)}
+.svc-ico{font-size:1.8rem;margin-bottom:1.2rem;opacity:.8}
+.svc-n{font-family:var(--fh);font-size:1.2rem;margin-bottom:.5rem}
+.svc-d{font-size:.82rem;color:rgba(242,240,235,.45);line-height:1.75}
+/* PROCESS */
+.process-section{background:var(--bg2);padding:7rem 3rem}
+@media(max-width:768px){.process-section{padding:4rem 1.25rem}}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;position:relative}
+.pgrid::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:1px;background:linear-gradient(to right,transparent,var(--g),transparent)}
+@media(max-width:768px){.pgrid{grid-template-columns:1fr 1fr;gap:2rem}.pgrid::before{display:none}}
+@media(max-width:500px){.pgrid{grid-template-columns:1fr}}
+.pstep{text-align:center;padding:0 1.5rem;position:relative}
+.pnum{width:56px;height:56px;border:1px solid rgba(255,215,0,.35);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.2rem;color:var(--g);margin:0 auto 1.5rem;position:relative;z-index:1}
+.ptitle{font-family:var(--fh);font-size:1.05rem;margin-bottom:.5rem;color:var(--fg)}
+.pdesc{font-size:.78rem;color:rgba(242,240,235,.4);line-height:1.7}
+/* SOCIAL PROOF */
+.proof{padding:7rem 3rem;background:var(--bg)}
+.pgri{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1280px;margin:3rem auto 0}
+@media(max-width:900px){.pgri{grid-template-columns:1fr;gap:3rem}}
+.testis{}
+.tcard{background:var(--c);border:1px solid rgba(255,255,255,.05);padding:1.8rem;margin-bottom:1px;transition:border-color .3s}
+.tcard:hover{border-color:rgba(255,215,0,.2)}
+.tsts{color:var(--g);font-size:.8rem;letter-spacing:.08em;margin-bottom:.8rem}
+.ttext{font-size:.88rem;color:rgba(242,240,235,.6);line-height:1.8;font-style:italic;margin-bottom:1.2rem}
+.tby{font-family:var(--fh);font-size:.85rem;color:var(--fg)}
+.twhere{font-size:.65rem;color:var(--mu)}
+.contact-box{background:var(--c);border:1px solid rgba(255,215,0,.12);padding:2.5rem;position:sticky;top:100px}
+.contact-box::before{content:'';display:block;height:2px;background:linear-gradient(to right,var(--g),var(--b));margin-bottom:2rem}
+.contact-box h3{font-family:var(--fh);font-size:1.6rem;margin-bottom:.5rem}
+.contact-box p{font-size:.82rem;color:rgba(242,240,235,.5);margin-bottom:2rem;line-height:1.7}
+.citem{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.2rem}
+.cico{width:32px;height:32px;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.clbl{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:.2rem}
+.cval{font-size:.88rem;color:rgba(242,240,235,.82)}
+.mbox{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;margin-top:1.5rem;position:relative;overflow:hidden}
+.mbox a{background:var(--g);color:#000;font-family:var(--fb);font-size:.75rem;font-weight:700;padding:.8rem 1.8rem;text-decoration:none;letter-spacing:.1em;transition:filter .2s}
+.mbox a:hover{filter:brightness(1.12)}
+footer{background:#000;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,215,0,.08)}
+.fb{font-family:var(--fh);font-size:1rem;color:var(--g)}
+.fc{font-size:.65rem;color:var(--mu)}
+@media(max-width:600px){footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.4rem 1.25rem}}
+.rv{opacity:0;transform:translateY(28px)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="cur"></div><div class="cur-r"></div>
+
+<nav>
+  <a class="logo" href="#"><span class="logo-main">Sheetal Samriya</span><span class="logo-sub">Chartered Accountants</span></a>
+  <ul class="nl"><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a href="tel:+918866128285" class="nbtn">Consult Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hglow"></div><div class="hglow2"></div>
+  <div class="hcont">
+    <div class="hleft">
+      <div class="heyebrow" id="ey"><div class="hline"></div><span>Haripura, Vadodara · 5.0★ Rating</span></div>
+      <h1 class="ht" id="t1">Trusted CAs for<br/><em>Your Growth</em></h1>
+      <p class="hsub" id="hs">Expert chartered accountancy, tax planning, and financial advisory — built on precision, delivered with integrity.</p>
+      <div class="hcta" id="hc">
+        <a href="tel:+918866128285" class="btn-g">📞 Free Consultation</a>
+        <a href="#services" class="btn-o">Our Services →</a>
+      </div>
+    </div>
+    <div class="hright rv">
+      <div class="stat-float">
+        <div class="sfrow">
+          <div class="sfitem"><div class="sfnum" data-count="500" data-suffix="+">0+</div><div class="sflbl">Clients Served</div></div>
+          <div class="sfitem"><div class="sfnum">5.0★</div><div class="sflbl">Perfect Rating</div></div>
+          <div class="sfitem"><div class="sfnum" data-count="10" data-suffix="+">0+</div><div class="sflbl">Years Practice</div></div>
+          <div class="sfitem"><div class="sfnum" data-count="46" data-suffix="">0</div><div class="sflbl">Reviews</div></div>
+        </div>
+        <div class="sf-badge"><div class="sf-badge-ico">🏆</div><div><div class="sf-badge-t">5.0 / 5.0 on Google</div><div class="sf-badge-s">46 verified reviews · Haripura, Vadodara</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ti">
+    <span class="titem">TAX PLANNING<span class="tsep">◆</span></span><span class="titem">GST COMPLIANCE<span class="tsep">◆</span></span><span class="titem">AUDIT & ASSURANCE<span class="tsep">◆</span></span><span class="titem">COMPANY REGISTRATION<span class="tsep">◆</span></span><span class="titem">ITR FILING<span class="tsep">◆</span></span><span class="titem">FINANCIAL ADVISORY<span class="tsep">◆</span></span>
+    <span class="titem">TAX PLANNING<span class="tsep">◆</span></span><span class="titem">GST COMPLIANCE<span class="tsep">◆</span></span><span class="titem">AUDIT & ASSURANCE<span class="tsep">◆</span></span><span class="titem">COMPANY REGISTRATION<span class="tsep">◆</span></span><span class="titem">ITR FILING<span class="tsep">◆</span></span><span class="titem">FINANCIAL ADVISORY<span class="tsep">◆</span></span>
+  </div>
+</div>
+
+<section class="sec" id="services">
+  <div class="ey"><div class="ey-line"></div><span class="ey-t">SERVICES</span></div>
+  <h2 class="st rv">Comprehensive Financial <em style="font-style:italic;color:var(--g)">Excellence</em></h2>
+  <div class="sgrid">
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">📊</div><div class="svc-n">Tax Planning & Filing</div><div class="svc-d">Strategic income tax planning, ITR filing for individuals, businesses and firms. Minimise liability legally.</div></div>
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">📋</div><div class="svc-n">GST Compliance</div><div class="svc-d">GST registration, monthly returns, annual filing, reconciliation and litigation support.</div></div>
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">🔍</div><div class="svc-n">Audit & Assurance</div><div class="svc-d">Statutory audits, internal audits, tax audits and stock audits conducted with full compliance.</div></div>
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">🏢</div><div class="svc-n">Company Registration</div><div class="svc-d">Pvt Ltd, LLP, OPC incorporation and all ROC compliances, secretarial services included.</div></div>
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">💼</div><div class="svc-n">Financial Advisory</div><div class="svc-d">Business valuation, project finance, bank loan assistance and strategic financial guidance.</div></div>
+    <div class="svc rv"><div class="svc-bar"></div><div class="svc-ico">⚖️</div><div class="svc-n">Legal Compliance</div><div class="svc-d">FEMA, SEBI, RBI compliances. NRI taxation and foreign investment structuring.</div></div>
+  </div>
+</section>
+
+<section class="process-section" id="process">
+  <div class="ey"><div class="ey-line"></div><span class="ey-t">HOW WE WORK</span></div>
+  <h2 class="st rv">Simple. Transparent. <em style="font-style:italic;color:var(--g)">Reliable.</em></h2>
+  <div class="pgrid">
+    <div class="pstep rv"><div class="pnum">01</div><div class="ptitle">Initial Consultation</div><div class="pdesc">Free discovery call to understand your financial situation and goals.</div></div>
+    <div class="pstep rv"><div class="pnum">02</div><div class="ptitle">Assessment & Plan</div><div class="pdesc">Detailed analysis and a customised compliance and advisory roadmap.</div></div>
+    <div class="pstep rv"><div class="pnum">03</div><div class="ptitle">Execution</div><div class="pdesc">Timely, accurate filings and documentation with zero delays.</div></div>
+    <div class="pstep rv"><div class="pnum">04</div><div class="ptitle">Ongoing Support</div><div class="pdesc">Year-round advisory and proactive alerts on regulatory changes.</div></div>
+  </div>
+</section>
+
+<section class="proof" id="contact">
+  <div class="ey"><div class="ey-line"></div><span class="ey-t">TRUST & CONTACT</span></div>
+  <h2 class="st rv">Why Businesses <em style="font-style:italic;color:var(--g)">Choose Us</em></h2>
+  <div class="pgri">
+    <div class="testis">
+      <div class="tcard rv"><div class="tsts">★★★★★</div><p class="ttext">"Sheetal ma'am handled our entire company registration and GST setup seamlessly. Extremely knowledgeable and prompt."</p><p class="tby">Raj Patel</p><p class="twhere">Google Review · 2025</p></div>
+      <div class="tcard rv"><div class="tsts">★★★★★</div><p class="ttext">"Been filing ITR with them for 3 years. Always proactive, explains every detail clearly. Best CA in Vadodara."</p><p class="tby">Mehul Shah</p><p class="twhere">Google Review · 2025</p></div>
+      <div class="tcard rv"><div class="tsts">★★★★★</div><p class="ttext">"Handled our startup compliance and funding documentation perfectly. Reliable, professional and honest."</p><p class="tby">Priya Joshi</p><p class="twhere">Google Review · 2024</p></div>
+    </div>
+    <div>
+      <div class="contact-box rv">
+        <h3>Get in Touch</h3>
+        <p>Schedule a free consultation and take the first step toward financial clarity and compliance.</p>
+        <div class="citem"><div class="cico">📞</div><div><div class="clbl">Phone</div><div class="cval"><a href="tel:+918866128285" style="color:var(--g);text-decoration:none">+91 88661 28285</a></div></div></div>
+        <div class="citem"><div class="cico">📍</div><div><div class="clbl">Address</div><div class="cval">Haripura, Vadodara, Gujarat</div></div></div>
+        <div class="citem"><div class="cico">⭐</div><div><div class="clbl">Rating</div><div class="cval">5.0 ★ — 46 Google Reviews</div></div></div>
+        <div class="mbox">
+          <p style="font-family:var(--fh);font-size:1rem;color:var(--g);z-index:1">Sheetal Samriya & Assoc.</p>
+          <a href="https://maps.google.com/?cid=14416579273150356944" target="_blank">Open in Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">Sheetal Samriya & Associates</div>
+  <div class="fc">© 2026 Sheetal Samriya & Associates · CA Firm · Haripura, Vadodara</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+if(window.matchMedia('(hover:hover)').matches){
+  const cur=document.querySelector('.cur'),ring=document.querySelector('.cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;gsap.to(cur,{x:mx,y:my,duration:.08});});
+  (function loop(){rx+=(mx-rx)*.08;ry+=(my-ry)*.08;gsap.set(ring,{x:rx,y:ry});requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.svc').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('h'));el.addEventListener('mouseleave',()=>ring.classList.remove('h'));});
+}
+const tl=gsap.timeline({delay:.2});
+tl.to('#ey',{opacity:1,y:0,duration:.6,ease:'power3.out'})
+  .to('#t1',{opacity:1,y:0,duration:.9,ease:'expo.out'},'-=.1')
+  .to('#hs',{opacity:1,y:0,duration:.6,ease:'power2.out'},'-=.25')
+  .to('#hc',{opacity:1,y:0,duration:.5,ease:'power2.out'},'-=.1');
+gsap.utils.toArray('.rv').forEach(el=>gsap.to(el,{scrollTrigger:{trigger:el,start:'top 88%'},opacity:1,y:0,duration:.75,ease:'power3.out'}));
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*25,y=(e.clientY/innerHeight-.5)*25;
+  gsap.to('.hglow',{x:x*.6,y:y*.5,duration:2,ease:'power2.out'});
+  gsap.to('.hglow2',{x:-x*.4,y:-y*.4,duration:2.5,ease:'power2.out'});
+});
+ScrollTrigger.create({trigger:'.stat-float',start:'top 80%',once:true,onEnter:()=>{
+  document.querySelectorAll('[data-count]').forEach(el=>{let c=0,t=+el.dataset.count,s=el.dataset.suffix||'';const iv=setInterval(()=>{c=Math.min(c+Math.ceil(t/50),t);el.textContent=c+s;if(c>=t)clearInterval(iv);},30);});
+}});
+</script>
+</body>
+</html>
