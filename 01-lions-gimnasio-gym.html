@@ -25,7 +25,8 @@ nav.s{background:rgba(8,8,8,.88);backdrop-filter:blur(20px);border-bottom:1px so
 .nl a:hover{color:var(--neon)}
 .nbtn{background:var(--neon);color:#000;font-family:var(--fh);font-size:.68rem;font-weight:700;padding:.65rem 1.4rem;text-decoration:none;letter-spacing:.1em;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);transition:filter .2s}
 .nbtn:hover{filter:brightness(1.15) drop-shadow(0 0 12px var(--neon))}
-@media(max-width:768px){.nl{display:none}nav{padding:1rem 1.25rem}}
+@media(max-width:768px){.nl{display:none}nav{padding:1rem 1.25rem}.scrollind{display:none}}
+@media(max-width:430px){.logo{font-size:.72rem;letter-spacing:.05em}.nbtn{padding:.5rem .9rem;font-size:.6rem}}
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding-top:72px}
 .hbg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover no-repeat;filter:grayscale(100%);opacity:.15;transform:scale(1.05)}
@@ -36,7 +37,7 @@ nav.s{background:rgba(8,8,8,.88);backdrop-filter:blur(20px);border-bottom:1px so
 .hc{position:relative;z-index:2;padding:0 2.5rem;max-width:1400px;margin:0 auto;width:100%}
 .hey{font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--neon);margin-bottom:1.5rem;opacity:0}
 .htw{overflow:hidden;margin-bottom:.3rem}
-.ht{font-family:var(--fh);font-size:clamp(4.5rem,13vw,12rem);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;opacity:0;transform:translateY(110%)}
+.ht{font-family:var(--fh);font-size:clamp(2rem,9.5vw,12rem);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;opacity:0;transform:translateY(110%)}
 .ht.stk{-webkit-text-stroke:2px var(--fg);color:transparent}
 .ht .gn{color:var(--neon);-webkit-text-stroke:0;text-shadow:0 0 40px rgba(57,255,20,.5)}
 .hsub{font-size:clamp(.88rem,1.4vw,1.05rem);color:rgba(240,240,240,.45);max-width:480px;line-height:1.75;margin:1.8rem 0;opacity:0}
@@ -45,7 +46,7 @@ nav.s{background:rgba(8,8,8,.88);backdrop-filter:blur(20px);border-bottom:1px so
 .btn-n:hover{filter:drop-shadow(0 0 18px var(--neon));transform:translateY(-2px)}
 .btn-g{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--fg);font-family:var(--fh);font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:.9rem 2rem;text-decoration:none;border:1px solid rgba(240,240,240,.18);transition:border-color .25s,color .25s}
 .btn-g:hover{border-color:var(--neon);color:var(--neon)}
-.hst{display:flex;gap:2.5rem;margin-top:2.5rem;opacity:0}
+.hst{display:flex;gap:1.5rem;margin-top:2.5rem;opacity:0;flex-wrap:wrap}
 .hsn{font-family:var(--fh);font-size:2rem;font-weight:900;color:var(--neon);line-height:1;text-shadow:0 0 20px rgba(57,255,20,.4)}
 .hsl{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);margin-top:.2rem}
 .scrollind{position:absolute;bottom:2rem;right:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:2;opacity:0}
